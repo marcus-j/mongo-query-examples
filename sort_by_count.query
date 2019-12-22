@@ -1,0 +1,3 @@
+db.getCollection("mycollection").aggregate([ 
+    {    $sortByCount: "$item._id"} 
+])
