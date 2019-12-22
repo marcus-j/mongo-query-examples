@@ -1,0 +1,19 @@
+db.getCollection("mycollection").aggregate([ 
+    { 
+        $match: { 
+            "username": { 
+                "$exists": true 
+            } 
+        } 
+    }, 
+    { 
+        $project: { 
+            "username": 1.0, 
+            "birth_date": 1.0, 
+            "timestamp": { $subtract: ["$dateCreated", new Date("1970-01-01")] } 
+        } 
+    }, 
+    { 
+        $limit: 5 
+    } 
+])
